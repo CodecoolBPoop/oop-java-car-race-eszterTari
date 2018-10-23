@@ -24,7 +24,7 @@ public class Race {
         // prints each vehicle's name, distance traveled ant type.
     }
 
-    public boolean boolean isThereABrokenTruck() {
+    public boolean isThereABrokenTruck() {
 
     }
 
