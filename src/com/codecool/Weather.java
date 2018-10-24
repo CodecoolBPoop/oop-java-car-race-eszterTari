@@ -2,7 +2,7 @@ package com.codecool;
 
 import java.util.Random;
 
-public class Weather {
+public class Weather extends Race {
 
     public static int setRaining() {
         // 30% chance of rain.
