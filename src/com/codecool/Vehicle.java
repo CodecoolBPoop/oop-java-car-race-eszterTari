@@ -1,7 +1,5 @@
 package com.codecool;
 
-import com.codecool.Race;
-
 public class Vehicle {
 
     String name;
