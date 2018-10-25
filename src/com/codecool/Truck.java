@@ -4,9 +4,9 @@ import java.util.Random;
 
 public class Truck extends Vehicle {
 
-    int breakdownTurnsLeft;
-        // holds how long its still broken down.
     boolean isItOkay;
+    int hoursStopped;
+        // holds how long its still broken down.
 
     public Truck() {
         Random rand = new Random();
@@ -16,9 +16,10 @@ public class Truck extends Vehicle {
         speed = 100;
             // speed: 100km/h. 5% chance of breaking down for 2 hours.
         isItOkay = true;
+        hoursStopped = 0;
     }
 
-    public static boolean isItBrokenDown() {
+    public boolean isItBrokenDown() {
         Random randomBreakDown = new Random();
         int isItBrokenDown = randomBreakDown.nextInt(101);
         if (isItBrokenDown <= 5) {
@@ -27,22 +28,19 @@ public class Truck extends Vehicle {
         return false;
     }
 
-    public void moveForAnHour(Race race) {
-        boolean isItBrokenDown = isItBrokenDown();
-        if (isItBrokenDown) {
+    public void moveForAnHour(Race race, boolean isATruckBrokenForThisHour) {
+        if (!isItOkay) {
             distanceTraveled += 0;
-            isItOkay = false;
-            System.out.println(name + "stopped in this hour because of a breaking down");
+            System.out.println(name + " stopped in this hour because of a breakdown");
+        } else if (isATruckBrokenForThisHour) {
+            distanceTraveled += 75;
+            System.out.println(name + " travelled: 75 km in this hour because of a broken truck");
         }
-        else if (!isItOkay) {
-            distanceTraveled += 0;
-            isItOkay = true;
-            System.out.println(name + "stopped in this hour because of a breaking down");
-        } else {
+        else {
             distanceTraveled += speed;
-            System.out.println(name + "traveled: " + speed + "km in this hour");
+            System.out.println(name + " travelled: " + speed + "km in this hour");
         }
-        System.out.println(name + "'s total distance traveled: " + distanceTraveled);
+        System.out.println(name + "'s total distance travelled: " + distanceTraveled + " km");
         System.out.println(" ");
     }
 }
